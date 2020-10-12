@@ -3,20 +3,20 @@
 # Optionally, you may also use PlaceCollection class
 
 from Place import Place
+from Place import file_entry
 
 """
 Name: Cooper Plath
-Date started: 12-10-20
+Date started: 11-10-20
 GitHub URL: https://github.com/cooper-plath/CooperPlathA2
 """
 
 
 
 def main():
-    Display_File = open("places.csv")
-    Places_List = []
+    # Display_File = open("places.csv")
     # Reads places.csv file and adds information to list
-    Add_File_Contents_To_List(Display_File, Places_List)
+    # Add_File_Contents_To_List(Display_File, Places_List)
     print("Travel Tracker 1.0 - by Cooper Plath")
     Total_List_Items(Places_List)
     print(f" {Total_List_Items(Places_List)} places loaded from places.csv")
@@ -49,13 +49,13 @@ def Add_List_To_File(Places_List):
         New_Row += 1
     Save_To_File.close()
 
-def Add_File_Contents_To_List(Display_File, Places_List):
-    for line in Display_File:
-        line = line.strip()
-        Line_Parts = line.split(',')
-        Line_Parts[2] = int(Line_Parts[2])
-        Places_List.append(Line_Parts)
-    return Places_List
+# def Add_File_Contents_To_List(Display_File, Places_List):
+#     for line in Display_File:
+#         line = line.strip()
+#         Line_Parts = line.split(',')
+#         Line_Parts[2] = int(Line_Parts[2])
+#         Places_List.append(Line_Parts)
+#     return Places_List
 
 
 def Display_List_Options(Places_List):
@@ -99,9 +99,9 @@ def Find_Location_String_Length(Places_List):
     return Max_Location_String
 
 
-def Total_List_Items(Places_List):
+def Total_List_Items():
     # Counts how many entries are in list
-    Total_List_Items = len(Places_List)
+    Total_List_Items = len(file_entry)
     return Total_List_Items
 
 
