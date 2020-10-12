@@ -18,14 +18,35 @@ class Place:
         return "{}, {}, {}, {}".format(self.name, self.country, self.priority, self.visited)
 
 new_row = 0
+entry_number = []
 display_file = open('places.csv')
 for line in display_file:
     line = line.strip()
     parts = line.split(',')
-    name = parts[0]
-    country = parts[1]
-    priority = parts[2]
-    visited = parts[3]
-    print(f"{new_row}. {Place(name, country, priority, visited)}")
+    # name = parts[0]
+    # country = parts[1]
+    # priority = parts[2]
+    # visited = parts[3]
+    # print(f"{new_row}. {Place(name, country, priority, visited)}")
     new_row += 1
+    entry_number.append(Place(parts[0], parts[1], parts[2], parts[3]))
+print(entry_number[0].is_visited())
+
+
+
+
+
+
+# display_file = open('places.csv')
+# item_number = 1
+# for line in display_file:
+#     line = line.strip()
+#     parts = line.split(',')
+#     name = parts[0]
+#     country = parts[1]
+#     priority = parts[2]
+#     visited = parts[3]
+#     Place = Place(name, country, priority, visited)
+
+
 
