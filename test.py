@@ -19,10 +19,15 @@
 
 from Place import Place
 from Place import file_entry
-print(len(file_entry))
-print(file_entry[2].name)
-file_entry.append(Place("Townsville", "Australia", 0, "v"))
-print(file_entry[3].is_visited())
+a = 0
+for i in file_entry:
+    a += 1
+print(a)
+# print(len(file_entry))
+# print(file_entry[2].name)
+# file_entry.append(Place("Townsville", "Australia", 0, "v"))
+# print(file_entry[3].is_visited())
+#
+# print(len(file_entry[1].name))
 
-print(len(file_entry))
 
