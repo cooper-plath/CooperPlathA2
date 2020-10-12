@@ -7,20 +7,27 @@ def run_tests():
 
     # Test empty place (defaults)
     print("Test empty place:")
-    default_place = Place("Townsville", "Australia", 12, "v")
+    default_place = Place("Townsville", "Australia", 0, "v")
     print(default_place)
     assert default_place.name == "Townsville"
     assert default_place.country == "Australia"
-    assert default_place.priority == 12
+    assert default_place.priority == 0
     assert default_place.is_visited
 
     # Test initial-value place
     print("Test initial-value place:")
-    new_place = Place("Malagar", "Spain", 3, False)
+    new_place = Place("Malagar", "Spain", 2, False)
     # TODO: Write tests to show this initialisation works
+    print(new_place)
+    print(new_place.country)
+    print("Is important: {}".format(new_place.is_important()))
+    print("Visited? {}".format(new_place.is_visited()))
+
 
 
     # TODO: Add more tests, as appropriate, for each method
+    # Checking if function 'is important' works
+    # print(new_place.is_important())
 
 
 run_tests()
