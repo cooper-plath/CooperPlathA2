@@ -19,15 +19,19 @@ def run_tests():
     new_place = Place("Malagar", "Spain", 2, False)
     # TODO: Write tests to show this initialisation works
     print(new_place)
+    print(new_place.name)
     print(new_place.country)
-    print("Is important: {}".format(new_place.is_important()))
-    print("Visited? {}".format(new_place.is_visited()))
+    print(new_place.priority)
+    print(new_place.visited)
+
+    print(f"Dict: {new_place.__dict__}")
+
 
 
 
     # TODO: Add more tests, as appropriate, for each method
-    # Checking if function 'is important' works
-    # print(new_place.is_important())
+    print("Is important: {}".format(new_place.is_important()))
+    print("Visited? {}".format(new_place.is_visited()))
 
 
 run_tests()

@@ -1,9 +1,10 @@
 """
-Replace the contents of this module docstring with your own details
 Name: Cooper Plath
-Date started: 30-8-20
-GitHub URL: https://github.com/cooper-plath/Assessment1
+Date started: 12-10-20
+GitHub URL: https://github.com/cooper-plath/CooperPlathA2
 """
+
+
 
 def main():
     Display_File = open("places.csv")
