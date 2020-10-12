@@ -69,7 +69,7 @@ def Display_List_Options():
     row_in_file = 0
     list_number = 1
     for i in range(Total_List_Items()):
-        if file_entry[row_in_file].is_visited() == True:
+        if file_entry[row_in_file].is_visited() == False:
             print(f" *{list_number}. {file_entry[row_in_file].name:{Name_Length}} in {file_entry[row_in_file].country:{Location_Length}} priority {file_entry[row_in_file].priority}")
         else:
             print(
@@ -85,20 +85,6 @@ def total_unvisited():
         if file_entry[new_row].is_visited() == False:
             total += 1
     return total
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def Find_Name_String_Length():
@@ -141,13 +127,13 @@ def Display_Menu():
     return Menu_Input
 
 
-# def Add_New_Place(Places_List):
-#     Location = Location_Error_Checking(Places_List)
-#     Country = Country_Error_Checking()
-#     Priority_Input = Integer_Error_Checking(Places_List)
-#     print(f"{Location} in {Country} (priority {Priority_Input}) added to Travel Tracker")
-#     # Inserts new sublist at beginning of global list once user enters correct information
-#     Places_List.insert(0, [Location, Country, Priority_Input, "n"])
+def Add_New_Place(Places_List):
+    Location = Location_Error_Checking(Places_List)
+    Country = Country_Error_Checking()
+    Priority_Input = Integer_Error_Checking(Places_List)
+    print(f"{Location} in {Country} (priority {Priority_Input}) added to Travel Tracker")
+    # Inserts new sublist at beginning of global list once user enters correct information
+    Places_List.insert(0, [Location, Country, Priority_Input, "n"])
 #
 #
 # def Mark_Place_As_Visited(Places_List):

@@ -19,15 +19,25 @@
 
 from Place import Place
 from Place import file_entry
-a = 0
-for i in file_entry:
-    a += 1
-print(a)
+
 # print(len(file_entry))
 # print(file_entry[2].name)
 # file_entry.append(Place("Townsville", "Australia", 0, "v"))
 # print(file_entry[3].is_visited())
 #
 # print(len(file_entry[1].name))
+display_file = open("places.csv")
+# print(display_file.read())
+list = []
+total = 0
+for lines in display_file:
+    parts = lines.strip()
+    parts = lines.split(',')
+    list.append(Place(parts[0],parts[1],parts[2],parts[3]))
+    print(list[total])
+    total += 1
+
+print("Comprehension")
+print([str(place) for place in list ])
 
 
