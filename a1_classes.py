@@ -224,52 +224,41 @@ def Country_Error_Checking():
 
 
 
-# def Mark_Place_As_Visited(Places_List):
-#     Display_List_Options(Places_List)
-#     # Checks if all locations have been visited already, prints message
-#     All_Visited = Check_If_Locations_Are_Visited(Places_List)
-#     if All_Visited == True:
-#         print(" No unvisited places")
-#     else:
-#         print(" Mark the number of a place to mark as visited")
-#         Mark_Visited = Mark_Visited_Input_Error_Check(Places_List)
-#         print(f" {Places_List[Mark_Visited][0]} in {Places_List[Mark_Visited][1]} visited!")
-#         # Once user marks location as visited, sublist element -1 is marked as visited
-#         Places_List[Mark_Visited][-1] = 'v'
-#
-#
+def Mark_Place_As_Visited(Places_List):
+    Display_List_Options(Places_List)
+    # Checks if all locations have been visited already, prints message
+    All_Visited = Check_If_Locations_Are_Visited(Places_List)
+    if All_Visited == True:
+        print(" No unvisited places")
+    else:
+        print(" Mark the number of a place to mark as visited")
+        Mark_Visited = Mark_Visited_Input_Error_Check(Places_List)
+        print(f" {Places_List[Mark_Visited][0]} in {Places_List[Mark_Visited][1]} visited!")
+        # Once user marks location as visited, sublist element -1 is marked as visited
+        Places_List[Mark_Visited][-1] = 'v'
 
-#
-#
-# def Mark_Visited_Input_Error_Check(Places_List):
-#     valid_integer = False
-#     while not valid_integer:
-#         try:
-#             Mark_Visited_Input = int(input(" >>> "))
-#             Mark_Visited_Input -= 1
-#             if Mark_Visited_Input < 0:
-#                 print("Number must be > 0")
-#             elif (Mark_Visited_Input) > Total_List_Items(Places_List):
-#                 print("Invalid place number")
-#             else:
-#                 if Places_List[Mark_Visited_Input][-1] == 'v':
-#                     print("That place is already visited")
-#                 else:
-#                     valid_integer = True
-#         except ValueError:
-#             print("Invalid input; enter a valid number")
-#     return Mark_Visited_Input
-#
-#
 
-#
-#
 
-#
-#
 
-#
-#
+
+def Mark_Visited_Input_Error_Check(Places_List):
+    valid_integer = False
+    while not valid_integer:
+        try:
+            Mark_Visited_Input = int(input(" >>> "))
+            Mark_Visited_Input -= 1
+            if Mark_Visited_Input < 0:
+                print("Number must be > 0")
+            elif (Mark_Visited_Input) > Total_List_Items(Places_List):
+                print("Invalid place number")
+            else:
+                if Places_List[Mark_Visited_Input][-1] == 'v':
+                    print("That place is already visited")
+                else:
+                    valid_integer = True
+        except ValueError:
+            print("Invalid input; enter a valid number")
+    return Mark_Visited_Input
 
 
 
