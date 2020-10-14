@@ -36,26 +36,8 @@ def main():
             Mark_Place_As_Visited()
             Menu_Input = Display_Menu()
     else:
-        Add_List_To_File(Places_List)
         print(f"{Total_List_Items()} places saved to places.csv")
         print("Have a nice day :)")
-
-
-# def Add_List_To_File(Places_List):
-#     Save_To_File = open("Places.csv", "w")
-#     New_Row = 0
-#     for i in range(Total_List_Items(Places_List)):
-#         Save_To_File.write("{}, {}, {}, {} \n".format(Places_List[New_Row][0], Places_List[New_Row][1], Places_List[New_Row][2], Places_List[New_Row][3]))
-#         New_Row += 1
-#     Save_To_File.close()
-
-# def Add_File_Contents_To_List(Display_File, Places_List):
-#     for line in Display_File:
-#         line = line.strip()
-#         Line_Parts = line.split(',')
-#         Line_Parts[2] = int(Line_Parts[2])
-#         Places_List.append(Line_Parts)
-#     return Places_List
 
 def Total_List_Items():
     # Counts how many entries are in list
@@ -108,10 +90,6 @@ def Find_Location_String_Length():
             File_List_Entry += 1
     return Max_Location_String
 
-
-
-
-
 def Display_Menu():
     print(""" Menu:  
  L - List Places
@@ -154,7 +132,7 @@ def Location_Error_Checking():
                 Valid_Entry = True
 
     return Location_Input.capitalize()
-
+""""""
 def Check_Location_In_List(Location_Input):
     # Checks that location input isn't identical to element in list
     Location_In_List = False

@@ -1,6 +1,6 @@
 """(Incomplete) Tests for PlaceCollection class."""
-from placecollection import PlaceCollection
-from place import Place
+from PlaceCollection import PlaceCollection
+from Place import Place
 
 
 def run_tests():
