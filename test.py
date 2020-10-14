@@ -58,8 +58,9 @@ from PlaceCollection import PlaceCollection
 #         print(f"{file_entry[row].name}: Not visited")
 #     row += 1
 
-PlaceCollection.load_places('places.csv')
-print(PlaceCollection.load_places())
+# PlaceCollection.load_places('places.csv')
+# print(PlaceCollection.load_places())
+
 
 
 

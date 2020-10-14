@@ -10,13 +10,13 @@ def run_tests():
     print("Test empty PlaceCollection:")
     place_collection = PlaceCollection()
     print(place_collection)
-    assert not place_collection.places  # an empty list is considered False
+    assert not place_collection.file_places  # an empty list is considered False
 
     # Test loading places
     print("Test loading places:")
     place_collection.load_places('places.csv')
     print(place_collection)
-    assert place_collection.places  # assuming CSV file is non-empty, non-empty list is considered True
+    assert place_collection.file_places  # assuming CSV file is non-empty, non-empty list is considered True
 
     # Test adding a new Place with values
     print("Test adding new place:")
