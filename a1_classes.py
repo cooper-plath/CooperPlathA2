@@ -227,7 +227,7 @@ def Mark_Place_As_Visited():
         Mark_Visited = Mark_Visited_Input_Error_Check()
         print(f" {file_entry[Mark_Visited].name} in {file_entry[Mark_Visited].country} visited!")
         # Once user marks location as visited, sublist element -1 is marked as visited
-        file_entry[Mark_Visited].visited == 'v'
+        file_entry[Mark_Visited].visited = 'v'
 
 def Check_If_Locations_Are_Visited():
     # Runs through each sublist and checks if 'n', not visited is still in list
