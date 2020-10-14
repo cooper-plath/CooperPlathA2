@@ -36,8 +36,20 @@ for lines in display_file:
     list.append(Place(parts[0],parts[1],parts[2],parts[3]))
     print(list[total])
     total += 1
+# print("")
+# if list[1].priority == 2:
+#     print('True')
+# else:
+#     print('False')
+# # print("Comprehension")
+# # print([str(place) for place in list ])
+new_row = 0
+integer = int(input("Number: "))
 
-print("Comprehension")
-print([str(place) for place in list ])
+for i in range(3):
+    if list[new_row].priority == integer:
+        print("Priority is in list")
+    else:
+        new_row += 1
 
 

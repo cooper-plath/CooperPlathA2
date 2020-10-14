@@ -29,15 +29,15 @@ def main():
             Menu_Input = Display_Menu()
         # Add new place
         elif Menu_Input == "A":
-            Add_New_Place(Places_List)
+            Add_New_Place()
             Menu_Input = Display_Menu()
         # Mark a place as visited
         elif Menu_Input == "M":
-            Mark_Place_As_Visited(Places_List)
+            Mark_Place_As_Visited()
             Menu_Input = Display_Menu()
     else:
         Add_List_To_File(Places_List)
-        print(f"{Total_List_Items(Places_List)} places saved to places.csv")
+        print(f"{Total_List_Items()} places saved to places.csv")
         print("Have a nice day :)")
 
 
@@ -127,15 +127,103 @@ def Display_Menu():
     return Menu_Input
 
 
-def Add_New_Place(Places_List):
-    Location = Location_Error_Checking(Places_List)
+def Add_New_Place():
+    Location = Location_Error_Checking()
     Country = Country_Error_Checking()
-    Priority_Input = Integer_Error_Checking(Places_List)
+    Priority_Input = Integer_Error_Checking()
     print(f"{Location} in {Country} (priority {Priority_Input}) added to Travel Tracker")
+    file_entry.insert(0, Place(Location, Country, Priority_Input, 'n'))
+
     # Inserts new sublist at beginning of global list once user enters correct information
-    Places_List.insert(0, [Location, Country, Priority_Input, "n"])
-#
-#
+
+def Location_Error_Checking():
+    # Error checking that str input isn't an integer or blank. Than checks if location is already in list
+    Valid_Entry = False
+    while not Valid_Entry:
+        Location_Input = str(input("Name?: "))
+        if len(Location_Input) <= 0:
+            print("Can't be blank")
+        elif Location_Input.isalpha() == False:
+            print("Can't be a number")
+        else:
+            Location_In_List = Check_Location_In_List(Location_Input)
+            if Location_In_List == True:
+                print("That place is already visited")
+            else:
+                Valid_Entry = True
+
+    return Location_Input.capitalize()
+
+def Check_Location_In_List(Location_Input):
+    # Checks that location input isn't identical to element in list
+    Location_In_List = False
+    Next_Row = 0
+    for i in range(Total_List_Items()):
+        if Location_Input.capitalize() in file_entry[Next_Row].name:
+            Location_In_List = True
+        else:
+            Next_Row += 1
+    return Location_In_List
+
+def Integer_Error_Checking():
+    valid_integer = False
+    while not valid_integer:
+        try:
+            Priority_Input = int(input("Priority: "))
+            if Priority_Input <= 0:
+                print("Number must be > 0")
+            else:
+                Input_In_List = check_priority_in_list(Priority_Input)
+                if Input_In_List == True:
+                    print("Invalid place number")
+                else:
+                    valid_integer = True
+        except ValueError:
+            print("Invalid input; enter a valid number")
+    return Priority_Input
+
+def check_priority_in_list(Priority_Input):
+    # Checks that priority input isn't identical to element in list
+    Input_In_List = False
+    Next_Row = 0
+    for i in range(Total_List_Items()):
+        if file_entry[Next_Row].priority == Priority_Input:
+            Input_In_List = True
+        else:
+            Next_Row += 1
+    return Input_In_List
+
+
+
+def Country_Error_Checking():
+    Valid_Entry = False
+    while not Valid_Entry:
+        Country_Input = str(input("Country?: "))
+        if len(Country_Input) <= 0:
+            print("Can't be blank")
+        elif Country_Input.isalpha() == False:
+            print("Can't be a number")
+        else:
+            Valid_Entry = True
+
+    return Country_Input.capitalize()
+
+# def Check_If_Locations_Are_Visited(Places_List):
+#     # Runs through each sublist and checks if 'n', not visited is still in list
+#     New_Row = 0
+#     All_Visited = True
+#     for i in range(Total_List_Items()):
+#         if 'n' in Places_List[New_Row][-1]:
+#             All_Visited = False
+#         else:
+#             New_Row += 1
+#     return All_Visited
+
+
+
+
+
+
 # def Mark_Place_As_Visited(Places_List):
 #     Display_List_Options(Places_List)
 #     # Checks if all locations have been visited already, prints message
@@ -150,16 +238,7 @@ def Add_New_Place(Places_List):
 #         Places_List[Mark_Visited][-1] = 'v'
 #
 #
-# def Check_If_Locations_Are_Visited(Places_List):
-#     # Runs through each sublist and checks if 'n', not visited is still in list
-#     New_Row = 0
-#     All_Visited = True
-#     for i in range(Total_List_Items(Places_List)):
-#         if 'n' in Places_List[New_Row][-1]:
-#             All_Visited = False
-#         else:
-#             New_Row += 1
-#     return All_Visited
+
 #
 #
 # def Mark_Visited_Input_Error_Check(Places_List):
@@ -182,79 +261,16 @@ def Add_New_Place(Places_List):
 #     return Mark_Visited_Input
 #
 #
-# def Integer_Error_Checking(Places_List):
-#     valid_integer = False
-#     while not valid_integer:
-#         try:
-#             Priority_Input = int(input("Priority: "))
-#             if Priority_Input <= 0:
-#                 print("Number must be > 0")
-#             else:
-#                 Input_In_List = Check_Priority_In_List(Priority_Input, Places_List)
-#                 if Input_In_List == True:
-#                     print("Invalid place number")
-#                 else:
-#                     valid_integer = True
-#         except ValueError:
-#             print("Invalid input; enter a valid number")
-#     return Priority_Input
+
 #
 #
-# def Check_Priority_In_List(Priority_Input, Places_List):
-#     # Checks that priority input isn't identical to element in list
-#     Input_In_List = False
-#     Next_Row = 0
-#     for i in range(Total_List_Items(Places_List)):
-#         if int(Priority_Input) in Places_List[Next_Row]:
-#             Input_In_List = True
-#         else:
-#             Next_Row += 1
-#     return Input_In_List
+
 #
 #
-# def Check_Location_In_List(Location_Input, Places_List):
-#     # Checks that location input isn't identical to element in list
-#     Location_In_List = False
-#     Next_Row = 0
-#     for i in range(Total_List_Items(Places_List)):
-#         if Location_Input.capitalize() in Places_List[Next_Row]:
-#             Location_In_List = True
-#         else:
-#             Next_Row += 1
-#     return Location_In_List
+
 #
 #
-# def Location_Error_Checking(Places_List):
-#     # Error checking that str input isn't an integer or blank. Than checks if location is already in list
-#     Valid_Entry = False
-#     while not Valid_Entry:
-#         Location_Input = str(input("Name?: "))
-#         if len(Location_Input) <= 0:
-#             print("Can't be blank")
-#         elif Location_Input.isalpha() == False:
-#             print("Can't be a number")
-#         else:
-#             Location_In_List = Check_Location_In_List(Location_Input, Places_List)
-#             if Location_In_List == True:
-#                 print("That place is already visited")
-#             else:
-#                 Valid_Entry = True
-#
-#     return Location_Input.capitalize()
-#
-#
-# def Country_Error_Checking():
-#     Valid_Entry = False
-#     while not Valid_Entry:
-#         Country_Input = str(input("Country?: "))
-#         if len(Country_Input) <= 0:
-#             print("Can't be blank")
-#         elif Country_Input.isalpha() == False:
-#             print("Can't be a number")
-#         else:
-#             Valid_Entry = True
-#
-#     return Country_Input.capitalize()
+
 
 
 main()
