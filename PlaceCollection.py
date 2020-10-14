@@ -1,4 +1,5 @@
 from Place import Place
+from operator import attrgetter
 
 class PlaceCollection:
     def __init__(self):
@@ -26,11 +27,12 @@ class PlaceCollection:
         self.file_places.append(place)
 
 
-    def total_unvisited_places(self):
+    def total_unvisited_places(self,):
         pass
 
-    def sort_priority(self):
-        pass
+    def sort(self, object):
+        self.object = object
+        return self.file_places.sort(key=attrgetter(object))
 
 def test():
     places = PlaceCollection
