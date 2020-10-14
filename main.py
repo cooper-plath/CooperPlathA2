@@ -1,8 +1,8 @@
 """
-Name:
-Date:
+Name: Cooper Plath
+Date: 12/10/20
 Brief Project Description:
-GitHub URL:
+GitHub URL: https://github.com/cooper-plath/CooperPlathA2
 """
 # Create your main program in this file, using the TravelTrackerApp class
 
