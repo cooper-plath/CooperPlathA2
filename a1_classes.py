@@ -84,6 +84,7 @@ def total_unvisited():
     for i in range(Total_List_Items()):
         if file_entry[new_row].is_visited() == False:
             total += 1
+        new_row += 1
     return total
 
 
@@ -208,40 +209,40 @@ def Country_Error_Checking():
 
     return Country_Input.capitalize()
 
-# def Check_If_Locations_Are_Visited(Places_List):
-#     # Runs through each sublist and checks if 'n', not visited is still in list
-#     New_Row = 0
-#     All_Visited = True
-#     for i in range(Total_List_Items()):
-#         if 'n' in Places_List[New_Row][-1]:
-#             All_Visited = False
-#         else:
-#             New_Row += 1
-#     return All_Visited
 
 
 
 
 
 
-def Mark_Place_As_Visited(Places_List):
-    Display_List_Options(Places_List)
+
+def Mark_Place_As_Visited():
+    Display_List_Options()
     # Checks if all locations have been visited already, prints message
-    All_Visited = Check_If_Locations_Are_Visited(Places_List)
+    All_Visited = Check_If_Locations_Are_Visited()
     if All_Visited == True:
         print(" No unvisited places")
     else:
         print(" Mark the number of a place to mark as visited")
-        Mark_Visited = Mark_Visited_Input_Error_Check(Places_List)
-        print(f" {Places_List[Mark_Visited][0]} in {Places_List[Mark_Visited][1]} visited!")
+        Mark_Visited = Mark_Visited_Input_Error_Check()
+        print(f" {file_entry[Mark_Visited].name} in {file_entry[Mark_Visited].country} visited!")
         # Once user marks location as visited, sublist element -1 is marked as visited
-        Places_List[Mark_Visited][-1] = 'v'
+        file_entry[Mark_Visited].visited == 'v'
+
+def Check_If_Locations_Are_Visited():
+    # Runs through each sublist and checks if 'n', not visited is still in list
+    new_row = 0
+    all_visited = True
+    for i in range(Total_List_Items()):
+        if file_entry[new_row].is_visited():
+            all_visited = False
+        else:
+            new_row += 1
+    return all_visited
 
 
 
-
-
-def Mark_Visited_Input_Error_Check(Places_List):
+def Mark_Visited_Input_Error_Check():
     valid_integer = False
     while not valid_integer:
         try:
@@ -249,10 +250,10 @@ def Mark_Visited_Input_Error_Check(Places_List):
             Mark_Visited_Input -= 1
             if Mark_Visited_Input < 0:
                 print("Number must be > 0")
-            elif (Mark_Visited_Input) > Total_List_Items(Places_List):
+            elif Mark_Visited_Input > Total_List_Items():
                 print("Invalid place number")
             else:
-                if Places_List[Mark_Visited_Input][-1] == 'v':
+                if file_entry[Mark_Visited_Input].is_visited():
                     print("That place is already visited")
                 else:
                     valid_integer = True

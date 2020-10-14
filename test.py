@@ -43,13 +43,18 @@ for lines in display_file:
 #     print('False')
 # # print("Comprehension")
 # # print([str(place) for place in list ])
-new_row = 0
-integer = int(input("Number: "))
-
+# new_row = 0
+# integer = int(input("Number: "))
+#
+# # for i in range(3):
+# #     if list[new_row].priority == integer:
+# #         print("Priority is in list")
+# #     else:
+# #         new_row += 1
+row = 0
 for i in range(3):
-    if list[new_row].priority == integer:
-        print("Priority is in list")
-    else:
-        new_row += 1
+    if file_entry[row].is_visited() == False:
+        print(f"{file_entry[row].name}: Not visited")
+    row += 1
 
 
