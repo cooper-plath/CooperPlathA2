@@ -6,6 +6,7 @@ class Place:
         self.country = country
         self.priority = int(priority)
         self.visited = visited
+        self.important = self.is_important()
     # Return true if 'visited' object is 'v'
     def is_visited(self):
         return self.visited == 'v'
@@ -15,11 +16,15 @@ class Place:
 
     # Return true if 'priority' object is equal or less than 2
     def is_important(self):
-        return self.priority <= 2
+        if self.priority <= 2:
+            self.important = True
+        else:
+            self.important = False
 
 
     def __str__(self):
-        return "{}, {}, {}, {}".format(self.name, self.country, self.priority, self.visited)
+        return "{} in {}, priority {}".format(self.name, self.country, self.priority)
+
 
 """Read places.csv and break each entry into name, country, etc using the Place class"""
 # new_row = 0

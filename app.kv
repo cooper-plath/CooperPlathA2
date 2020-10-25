@@ -3,6 +3,7 @@ BoxLayout:
     orientation: 'horizontal'
     BoxLayout:
         orientation: 'vertical'
+        size_hint_x: 0.3
         Label:
             text: 'Sort by:'
             font_size: 30
@@ -23,21 +24,23 @@ BoxLayout:
         TextInput:
             id: priority_input
         Button:
-            id: add_place
             text: 'Add Place'
+            on_release: app.press_add(name_input.text, country_input.text, priority_input.text)
         Button:
-            id: clear_place
             text: 'Clear'
+            on_release: app.press_clear()
     BoxLayout:
         orientation: 'vertical'
+
         Label:
             id: total_unvisited_status
             font_size: 20
-
+            size_hint_y: 0.2
         BoxLayout:
             orientation: 'vertical'
             id: locations_box
         Label:
             id: location_clicked_status
             font_size: 20
+            size_hint_y: 0.1
 

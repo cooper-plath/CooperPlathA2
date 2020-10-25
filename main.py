@@ -30,26 +30,54 @@ class TravelTrackerApp(App):
         self.root = Builder.load_file('app.kv')
         self.create_widgets()
         self.total_unvisited_status()
-        self.location_pressed_status()
+
 
         return self.root
 
     def create_widgets(self):
         index = 1
         for place in self.place_collection.file_places:
-            location_button = Button(text=str(place))
+            location_button = Button(text=str(place), id=str(index))
             location_button.place = place
             location_button.bind(on_release=self.press_entry)
             self.root.ids.locations_box.add_widget(location_button)
-            index = index + 1
+            index += 1
+
+
 
     def press_entry(self, instance):
-        self.root.ids.press_status.text = "You pressed " + instance.id
+        instance.place.is_visited = True
+
+        self.root.ids.location_clicked_status.text = "You visited " + instance.place.country
+        self.root.ids.locations_box.clear_widgets()
+        self.create_widgets()
+
+    # def change_status(self, instance):
+
+    def press_add(self, name_input, country_input, priority_input):
+
+
+        place = Place(name_input, country_input, priority_input, 'n')
+        location_button = Button(text=str(place))
+        location_button.bind(on_release=self.press_entry)
+        self.root.ids.locations_box.add_widget(location_button)
+        self.place_collection.add_place(Place(name_input, country_input, priority_input, 'n'))
+        print(self.place_collection.file_places[-1])
+
+    def press_clear(self):
+        self.root.ids.name_input.text = ""
+        self.root.ids.country_input.text = ""
+        self.root.ids.priority_input.text = ""
+
+
+
+
+
 
     def total_unvisited_status(self):
         self.root.ids.total_unvisited_status.text = "Places to visit: " + str(self.place_collection.total_unvisited_places())
 
-    def location_pressed_status(self):
-        self.root.ids.location_clicked_status.text = "work in progress"
+    # def location_pressed_status(self):
+    #     self.root.ids.location_clicked_status.text = "work in progress"
 
 TravelTrackerApp().run()

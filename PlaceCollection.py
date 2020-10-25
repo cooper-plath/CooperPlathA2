@@ -16,6 +16,11 @@ class PlaceCollection:
             for line in file:
                 parts = line.strip().split(',')
                 place = Place(parts[0], parts[1], int(parts[2]), parts[3])
+
+                if parts[3] == 'v':
+                    place.is_visited = True
+                else:
+                    place.is_visited = False
                 self.file_places.append(place)
 
 
