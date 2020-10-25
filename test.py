@@ -69,6 +69,8 @@ print(place_collection)
 place_collection.load_places('places.csv')
 print(place_collection.file_places[0])
 print(len(place_collection.file_places))
+print("total unvisited test")
+print(place_collection.total_unvisited_places())
 
 
 # new_row = 0

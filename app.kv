@@ -31,10 +31,13 @@ BoxLayout:
     BoxLayout:
         orientation: 'vertical'
         Label:
-            text: app.total_visited
+            id: total_unvisited_status
+            font_size: 20
+
         BoxLayout:
             orientation: 'vertical'
             id: locations_box
-#        Label:
-#            text: app.location_clicked
+        Label:
+            id: location_clicked_status
+            font_size: 20
 

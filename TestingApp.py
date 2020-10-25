@@ -5,29 +5,43 @@ from kivy.properties import StringProperty
 from PlaceCollection import PlaceCollection
 from Place import Place
 
+
+
 class TestingApp(App):
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.place_collection = PlaceCollection()
         self.place_collection.load_places('places.csv')
 
 
+
+
     def build(self):
         self.title = "testing"
         self.root = Builder.load_file('TestingApp.kv')
-        self.create_widgets()
+        self.change_status()
         return self.root
 
-    def create_widgets(self):
-        index = 1
-        for place in self.place_collection.file_places:
-            location_button = Button(text=str(place))
-            location_button.place = place
-            location_button.bind(on_release=self.press_entry)
-            self.root.ids.entry_box.add_widget(location_button)
-            index = index + 1
+    def change_status(self):
+        self.root.ids.status.text = "Places to visit: " + str(self.place_collection.total_unvisited_places())
+        print("hello")
 
-    def press_entry(self, instance):
-        self.root.ids.press_status.text = "You pressed " + instance.id
+
+
+    # def create_widgets(self):
+    #     index = 1
+    #     for place in self.place_collection.file_places:
+    #         location_button = Button(text=str(place))
+    #         location_button.place = place
+    #         location_button.bind(on_release=self.press_entry)
+    #         self.root.ids.entry_box.add_widget(location_button)
+    #         index = index + 1
+    #
+    # def press_entry(self, instance):
+    #     self.root.ids.press_status.text = "You pressed " + instance.id
+    #
+    # def status(self):
+    #     self.root.ids.status_message.text = 'hello'
 
 TestingApp().run()

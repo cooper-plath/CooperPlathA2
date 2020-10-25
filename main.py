@@ -16,6 +16,7 @@ from Place import Place
 
 
 class TravelTrackerApp(App):
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.place_collection = PlaceCollection()
@@ -28,6 +29,9 @@ class TravelTrackerApp(App):
         self.title = "CooperPlathA2"
         self.root = Builder.load_file('app.kv')
         self.create_widgets()
+        self.total_unvisited_status()
+        self.location_pressed_status()
+
         return self.root
 
     def create_widgets(self):
@@ -42,7 +46,10 @@ class TravelTrackerApp(App):
     def press_entry(self, instance):
         self.root.ids.press_status.text = "You pressed " + instance.id
 
+    def total_unvisited_status(self):
+        self.root.ids.total_unvisited_status.text = "Places to visit: " + str(self.place_collection.total_unvisited_places())
 
-
+    def location_pressed_status(self):
+        self.root.ids.location_clicked_status.text = "work in progress"
 
 TravelTrackerApp().run()
