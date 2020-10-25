@@ -56,13 +56,18 @@ class TravelTrackerApp(App):
 
     def press_add(self, name_input, country_input, priority_input):
 
+        if self.root.ids.name_input.text == '' or self.root.ids.country_input.text == '' or self.root.ids.priority_input.text == '':
+             self.root.ids.location_clicked_status.text = "All fields must be completed"
+        elif int(self.root.ids.priority_input.text) <0:
+            self.root.ids.location_clicked_status.text = "Priority must be > 0"
 
-        place = Place(name_input, country_input, priority_input, 'n')
-        location_button = Button(text=str(place))
-        location_button.bind(on_release=self.press_entry)
-        self.root.ids.locations_box.add_widget(location_button)
-        self.place_collection.add_place(Place(name_input, country_input, priority_input, 'n'))
-        print(self.place_collection.file_places[-1])
+        else:
+            place = Place(name_input, country_input, priority_input, 'n')
+            location_button = Button(text=str(place))
+            location_button.bind(on_release=self.press_entry)
+            self.root.ids.locations_box.add_widget(location_button)
+            self.place_collection.add_place(Place(name_input, country_input, priority_input, 'n'))
+            print(self.place_collection.file_places[-1])
 
     def press_clear(self):
         self.root.ids.name_input.text = ""
