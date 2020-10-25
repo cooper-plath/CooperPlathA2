@@ -1,32 +1,20 @@
-"""
-Name: Cooper Plath
-Date: 12/10/20
-Brief Project Description:
-GitHub URL: https://github.com/cooper-plath/CooperPlathA2
-"""
-# Create your main program in this file, using the TravelTrackerApp class
-
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.button import Button
-from PlaceCollection import PlaceCollection
 from kivy.properties import StringProperty
+from PlaceCollection import PlaceCollection
 from Place import Place
 
-
-
-class TravelTrackerApp(App):
+class TestingApp(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.place_collection = PlaceCollection()
         self.place_collection.load_places('places.csv')
 
 
-
     def build(self):
-        """ Link app.kv file to main build"""
-        self.title = "CooperPlathA2"
-        self.root = Builder.load_file('app.kv')
+        self.title = "testing"
+        self.root = Builder.load_file('TestingApp.kv')
         self.create_widgets()
         return self.root
 
@@ -36,13 +24,10 @@ class TravelTrackerApp(App):
             location_button = Button(text=str(place))
             location_button.place = place
             location_button.bind(on_release=self.press_entry)
-            self.root.ids.locations_box.add_widget(location_button)
+            self.root.ids.entry_box.add_widget(location_button)
             index = index + 1
 
     def press_entry(self, instance):
         self.root.ids.press_status.text = "You pressed " + instance.id
 
-
-
-
-TravelTrackerApp().run()
+TestingApp().run()

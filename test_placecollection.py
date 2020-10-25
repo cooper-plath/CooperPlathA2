@@ -29,9 +29,20 @@ def run_tests():
     print(place_collection)
     # TODO: Add more sorting tests
 
+    place_collection.sort("country")
+    print(place_collection)
     # TODO: Test saving places (check CSV file manually to see results)
 
+    place_collection.save_places()
+    print(place_collection)
+    place_collection.add_place(Place("Townsville", "Australia", 7, True))
+    print(f"Updated: {place_collection}")
+
+
     # TODO: Add more tests, as appropriate, for each method
+    print(place_collection.total_unvisited_places())
+
+
 
 
 run_tests()

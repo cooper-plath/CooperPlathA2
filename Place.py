@@ -10,6 +10,9 @@ class Place:
     def is_visited(self):
         return self.visited == 'v'
 
+    def is_not_visited(self):
+        return self.visited == 'n'
+
     # Return true if 'priority' object is equal or less than 2
     def is_important(self):
         return self.priority <= 2
@@ -19,15 +22,15 @@ class Place:
         return "{}, {}, {}, {}".format(self.name, self.country, self.priority, self.visited)
 
 """Read places.csv and break each entry into name, country, etc using the Place class"""
-new_row = 0
-file_entry = []
-display_file = open('places.csv')
-for line in display_file:
-    line = line.strip()
-    parts = line.split(',')
-    parts[2] = int(parts[2])
-    new_row += 1
-    file_entry.append(Place(parts[0], parts[1], parts[2], parts[3]))
+# new_row = 0
+# file_entry = []
+# display_file = open('places.csv')
+# for line in display_file:
+#     line = line.strip()
+#     parts = line.split(',')
+#     parts[2] = int(parts[2])
+#     new_row += 1
+#     file_entry.append(Place(parts[0], parts[1], parts[2], parts[3]))
 
 
 

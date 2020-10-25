@@ -12,23 +12,29 @@ class PlaceCollection:
 
     def load_places(self, filename):
         self.filename = filename
-        file_places = open(self.filename)
-        for line in file_places:
-            parts = line.strip().split(',')
-            self.file_places.append(Place(parts[0], parts[1], int(parts[2]), parts[3]))
-        file_places.close()
-        return self.file_places
+        with open(filename) as file:
+            for line in file:
+                parts = line.strip().split(',')
+                place = Place(parts[0], parts[1], int(parts[2]), parts[3])
+                self.file_places.append(place)
+
 
 
     def save_places(self):
-        pass
+
+        save_to_file = open(self.filename, 'w')
+        new_row = 0
+        for line in range(len(self.file_places)):
+            save_to_file.write("{} \n".format(self.file_places[new_row]))
+            new_row += 1
+        save_to_file.close()
 
     def add_place(self, place):
         self.file_places.append(place)
 
 
-    def total_unvisited_places(self,):
-        pass
+    def total_unvisited_places(self):
+        return len([1 for place in self.file_places if place.is_not_visited()])
 
     def sort(self, object):
         self.object = object

@@ -17,9 +17,7 @@
 #     name = Line_Parts[0]
 #
 
-from Place import Place
-from Place import file_entry
-from PlaceCollection import PlaceCollection
+
 
 # print(len(file_entry))
 # print(file_entry[2].name)
@@ -61,6 +59,45 @@ from PlaceCollection import PlaceCollection
 # PlaceCollection.load_places('places.csv')
 # print(PlaceCollection.load_places())
 
+
+from PlaceCollection import PlaceCollection
+from Place import Place
+
+
+place_collection = PlaceCollection()
+print(place_collection)
+place_collection.load_places('places.csv')
+print(place_collection.file_places[0])
+print(len(place_collection.file_places))
+
+
+# new_row = 0
+# file_entry = []
+# display_file = open('places.csv')
+# for line in display_file:
+#     line = line.strip()
+#     parts = line.split(',')
+#     parts[2] = int(parts[2])
+#     new_row += 1
+#     file_entry.append(Place(parts[0], parts[1], parts[2], parts[3]))
+# print(file_entry[0].name)
+
+
+
+# placecollection = PlaceCollection()
+# print(placecollection.file_places)
+# print(placecollection.load_places('places.csv'))
+# entry = 0
+# print(placecollection.file_places[0])
+
+
+
+# total_places = []
+# placecollection.load_places('places.csv')
+# print(f"Total Places {total_places}")
+# print(placecollection)
+# print(total_places.append(placecollection))
+# print(total_places.)
 
 
 
