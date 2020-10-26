@@ -19,24 +19,30 @@ class PlaceCollection:
             for line in file:
                 parts = line.strip().split(',')
                 place = Place(parts[0], parts[1], parts[2], parts[3])
-                # if priority = True or 'v', assign True is,visited status
+
                 if parts[3] == 'v' or parts[3] == True:
                     place.is_visited = True
                 else:
                     place.is_visited = False
-                # append to main list
                 self.file_places.append(place)
 
     """Opens chosen file, wipes new, and appends each line from main list"""
 
-    def save_places(self):
-
+    def save_places(self, filename):
+        self.filename = filename
         save_to_file = open(self.filename, 'w')
-        new_row = 0
-        for line in range(len(self.file_places)):
-            save_to_file.write("{} \n".format(self.file_places[new_row]))
-            new_row += 1
+        for place in self.file_places:
+            if place.visited == True:
+                place = (f"{place.name}, {place.country}, {str(place.priority)}, v")
+            else:
+                place = (f"{place.name}, {place.country}, {str(place.priority)}, n")
+            save_to_file.write("{} \n".format(place))
         save_to_file.close()
+        # new_row = 0
+        # for line in range(len(self.file_places)):
+        #     save_to_file.write("{} \n".format(self.file_places[new_row]))
+        #     new_row += 1
+        # save_to_file.close()
 
     """Adds new entry to main list when called"""
 

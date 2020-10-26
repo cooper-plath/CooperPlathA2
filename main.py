@@ -27,6 +27,7 @@ class TravelTrackerApp(App):
         super().__init__(**kwargs)
         self.place_collection = PlaceCollection()
         self.place_collection.load_places('places.csv')
+        self.place_collection.save_places('places.csv')
 
     def build(self):
         """ Link app.kv file to main build"""
@@ -105,5 +106,7 @@ class TravelTrackerApp(App):
     def location_pressed_status(self):
         self.root.ids.location_clicked_status.text = "Welcome to Travel Tracker 2.0"
 
+    def on_stop(self):
+        self.place_collection.save_places('places.csv')
 
 TravelTrackerApp().run()
