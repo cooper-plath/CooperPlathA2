@@ -12,28 +12,31 @@ class TestingApp(App):
     current_category = StringProperty()
     dictionary_codes = ListProperty()
 
-    # def __init__(self, **kwargs):
+    def __init__(self):
     #     super().__init__(**kwargs)
     #     self.place_collection = PlaceCollection()
     #     self.place_collection.load_places('places.csv')
+        place_collection = PlaceCollection()
 
 
 
-
-    def build(self):
-        self.title = "testing"
-        self.root = Builder.load_file('TestingApp.kv')
-        self.dictionary_codes = dictionary.keys()
-        self.current_category = self.dictionary_codes[0]
-        return self.root
-
-    # def change_status(self, dictionary_code):
-    #     self.root.ids.output_label.text = dictionary[dictionary_code]
-    #     print("change to", dictionary_code)
-
-
-
+    # def build(self):
+    #     self.title = "testing"
+    #     self.root = Builder.load_file('TestingApp.kv')
+    #     self.test
+    #     self.dictionary_codes = dictionary.keys()
+    #     self.current_category = self.dictionary_codes[0]
+    #     return self.root
     #
+    # # def change_status(self, dictionary_code):
+    # #     self.root.ids.output_label.text = dictionary[dictionary_code]
+    # #     print("change to", dictionary_code)
+    #
+    #
+    # def test(self):
+    #     self.root.ids.testing.text = self.place_collection.total_unvisited_places()
+    #     print(self.place_collection.total_unvisited_places)
+    # #
     # def press_add(self, instance):
     #     test = self.root.ids.testing.text
 
