@@ -63,15 +63,32 @@
 from PlaceCollection import PlaceCollection
 from Place import Place
 
+# place_collection = PlaceCollection()
+# print(place_collection)
+# place_collection.load_places('places.csv')
+# print(place_collection)
+# print(place_collection.total_unvisited_places())
+# place_collection.add_place(Place('Townsville','Australia', 4, True))
+# print(place_collection)
+# print(place_collection.file_places[-1])
+# print(place_collection)
 
-place_collection = PlaceCollection()
-print(place_collection)
-place_collection.load_places('places.csv')
-print(place_collection.file_places[0])
-print(len(place_collection.file_places))
-print("total unvisited test")
-print(place_collection.total_unvisited_places())
 
+file_list = []
+file_list.append(Place('Townsville','Australia', 4, False))
+print(file_list[0].is_visited())
+
+
+
+
+
+# place_collection = PlaceCollection()
+# print(place_collection)
+# place_collection.load_places('places.csv')
+# print(place_collection.file_places[0])
+# print(len(place_collection.file_places))
+# print("total unvisited test")
+# print(place_collection.total_unvisited_places())
 
 # new_row = 0
 # file_entry = []

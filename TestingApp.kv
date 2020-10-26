@@ -4,10 +4,22 @@ BoxLayout:
 #        orientation: 'vertical'
 #        id: entry_box
     BoxLayout:
-        orientation: 'vertical'
-        Label:
-            id: status
-            font_size: 48
+#        orientation: 'vertical'
+#        Spinner:
+#            id: catagory_selection
+#            text: app.current_category
+#            values: app.dictionary_codes
+#            on_text:app.change_status(self.text)
+#        Label:
+#            id: output_label
+        TextInput:
+            id: testing
+        Button:
+            text: "Click me"
+            on_press: app.press_add(testing.text)
+##        Label:
+##            id: status
+##            font_size: 48
 
 
 

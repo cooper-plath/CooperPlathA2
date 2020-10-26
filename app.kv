@@ -4,23 +4,30 @@ BoxLayout:
     BoxLayout:
         orientation: 'vertical'
         size_hint_x: 0.3
-        Label:
-            text: 'Sort by:'
-            font_size: 30
 
-#        Spinner:
-#            id: sort_by
-#            text: 'Work in progress'
+
+        Spinner:
+            id: category_selection
+            # Takes in first key in SORTING_CATEGORIES dictionary
+            text: app.current_category
+            # Adds other dictionary keys to Spinner menu for user to click
+            values: app.category_codes
+            # Once category item is clicked, calls change_category sorting function
+            on_text: app.change_category(self.text)
         Label:
             text: 'Name:'
         TextInput:
+            # User enters in name of new location
             id: name_input
             multiline: False
+            # Write_tab allows the 'tab' key to be pressed to skip to next text input
+            write_tab: False
         Label:
             text: 'Country:'
         TextInput:
             id: country_input
             multiline: False
+            write_tab: False
         Label:
             text: 'Priority:'
         TextInput:
@@ -28,18 +35,22 @@ BoxLayout:
             multiline: False
         Button:
             text: 'Add Place'
+            # On release of button, text inputs are forwarded to the press_add function
             on_release: app.press_add(name_input.text, country_input.text, priority_input.text)
         Button:
+            # Clears text inputs of string values
             text: 'Clear'
             on_release: app.press_clear()
     BoxLayout:
         orientation: 'vertical'
 
         Label:
+            # Dynamic status label that displays total number of unvisited places
             id: total_unvisited_status
             font_size: 20
             size_hint_y: 0.2
         BoxLayout:
+            # Locations fromK
             orientation: 'vertical'
             id: locations_box
         Label:
